@@ -1,0 +1,595 @@
+/* Modern Admin Page Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.admin-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: transparent;
+}
+
+/* Sidebar Styles */
+.admin-sidebar {
+  width: 280px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.admin-sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  pointer-events: none;
+}
+
+.admin-sidebar h2 {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.admin-sidebar button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.admin-sidebar button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+  z-index: -1;
+}
+
+.admin-sidebar button:hover::before {
+  left: 100%;
+}
+
+.admin-sidebar button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.admin-sidebar .logout-btn {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  margin-top: auto;
+}
+
+.admin-sidebar .logout-btn:hover {
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+}
+
+/* Main Content Styles */
+.admin-main {
+  flex: 1;
+  padding: 40px;
+  background: transparent;
+  overflow-y: auto;
+}
+
+.admin-main h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Add Job Section */
+.add-job-section {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 30px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  animation: slideInUp 0.6s ease-out;
+}
+
+.add-job-section h3 {
+  font-size: 24px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 25px;
+}
+
+.add-job-section input,
+.add-job-section textarea,
+.add-job-section select {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 15px 20px;
+  border-radius: 12px;
+  border: 2px solid rgba(102, 126, 234, 0.1);
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.add-job-section input:focus,
+.add-job-section textarea:focus,
+.add-job-section select:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+  transform: translateY(-2px);
+}
+
+.add-job-section textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Job Cards Container */
+.job-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 30px;
+  animation: fadeInUp 0.8s ease-out;
+  margin-top: 20px;
+}
+
+/* Job Card Styles - Premium Design */
+.job-card {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  border: none;
+  padding: 30px;
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    0 8px 16px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Premium Gradient Border */
+.job-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 25%, #45b7d1 50%, #96ceb4 75%, #ffeaa7 100%);
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+/* Decorative Corner Element */
+.job-card::after {
+  content: '💼';
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 24px;
+  opacity: 0.1;
+  transition: all 0.3s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.12),
+    0 15px 30px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.job-card:hover::after {
+  opacity: 0.3;
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* Job Title Styling */
+.job-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px;
+  line-height: 1.3;
+  position: relative;
+}
+
+.job-card h3::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.job-card:hover h3::after {
+  width: 80px;
+}
+
+/* Job Details Styling */
+.job-card p {
+  color: #64748b;
+  margin-bottom: 12px;
+  line-height: 1.6;
+  font-size: 15px;
+  font-weight: 400;
+  position: relative;
+  padding-left: 0;
+  transition: all 0.2s ease;
+}
+
+.job-card p strong {
+  color: #334155;
+  font-weight: 600;
+  background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  min-width: 80px;
+}
+
+/* Special styling for different info types */
+.job-card p:nth-of-type(1) strong::before { content: '🏢 '; }
+.job-card p:nth-of-type(2) strong::before { content: '📍 '; }
+.job-card p:nth-of-type(3) strong::before { content: '⏰ '; }
+.job-card p:nth-of-type(4) strong::before { content: '📝 '; }
+.job-card p:nth-of-type(5) strong::before { content: '💰 '; }
+
+/* Hover effect for paragraphs */
+.job-card:hover p {
+  color: #475569;
+  padding-left: 8px;
+}
+
+/* Special treatment for description */
+.job-card p:nth-of-type(4) {
+  background: rgba(102, 126, 234, 0.05);
+  padding: 15px;
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+  margin: 15px 0;
+  font-style: italic;
+}
+
+/* Salary highlighting */
+.job-card p:nth-of-type(5) {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+  padding: 12px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  color: #059669;
+  border: 2px solid rgba(34, 197, 94, 0.2);
+  text-align: center;
+  margin: 15px 0;
+}
+
+/* Button Groups */
+.btn-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-group button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-group button:not(.cancel-btn):not(.delete-btn) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-group button:not(.cancel-btn):not(.delete-btn):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.cancel-btn {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+}
+
+.cancel-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+}
+
+.delete-btn {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.delete-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+}
+
+/* Loading and Empty States */
+.admin-main p {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-wrapper {
+    flex-direction: column;
+  }
+  
+  .admin-sidebar {
+    width: 100%;
+    flex-direction: row;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .admin-sidebar h2 {
+    margin-bottom: 0;
+  }
+  
+  .admin-main {
+    padding: 20px;
+  }
+  
+  .admin-main h1 {
+    font-size: 28px;
+  }
+  
+  .job-card-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .btn-group {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-sidebar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .admin-sidebar button {
+    flex: 1;
+    min-width: 120px;
+  }
+  
+  .add-job-section {
+    padding: 20px;
+  }
+  
+  .job-card {
+    padding: 20px;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+/* Additional Job Card Animations */
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Enhanced Button Groups for Job Cards */
+.job-card .btn-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.job-card .btn-group button {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Edit Button - Premium Blue */
+.job-card .btn-group button:not(.delete-btn) {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
+
+.job-card .btn-group button:not(.delete-btn):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+}
+
+/* Delete Button - Premium Red */
+.job-card .delete-btn {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
+}
+
+.job-card .delete-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(239, 68, 68, 0.4);
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+}
+
+/* Button Shine Effect */
+.job-card .btn-group button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.job-card .btn-group button:hover::before {
+  left: 100%;
+}
+
+/* Empty State for Job Cards */
+.job-card-container:empty::before {
+  content: "🎯 No jobs available yet!\A✨ Start by adding your first job posting to see the magic happen!";
+  white-space: pre-line;
+  display: block;
+  text-align: center;
+  padding: 80px 40px;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  border: 2px dashed rgba(255, 255, 255, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  animation: pulse 3s infinite;
+  grid-column: 1 / -1;
+}
+
+/* Pulse animation for loading states */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading {
+  animation: pulse 2s infinite;
+}
